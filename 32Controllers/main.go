@@ -1,0 +1,48 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
+
+
+type Course struct {
+	CourseId  string `json:"course_id"`
+	CourseName string `json:"course_name"`
+	Price   int `json:"price"`
+	Author  *Author  `json:"author"` // pointer to Author struct
+}
+
+type Author struct {
+	FirstName  string  `json:"first_name`
+	Website string `json:"website`
+}
+
+
+//Fake Db
+
+var courses []Course
+
+// middleware, helper  - file
+func (c *Course) IsEmpty() bool{
+	return c.CourseName == "" && c.CourseId == "" && c.Price == 0
+}
+
+
+// controllr = file
+ //server  home route 
+
+ func serverHome(w http.ResponseWriter, r http.Request){
+	w.Write([]byte("<h1>Welcome to golang </h1>"))
+ }
+
+ func getAllCourses(w http.ResponseWriter, r *http.Request){
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(courses)
+ }
+
+
+func main() {
+	fmt.Println("Welcome to Api in golang")
+}
