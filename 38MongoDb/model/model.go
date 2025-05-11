@@ -1,12 +1,11 @@
 package model
 
 import (
-     "go.mongodb.org/mongo-driver/v2/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-
 type Netflix struct {
-	ID  primitive.ObjectID    `json:"_id,omitempty" bson:"_id,omitempty"`
-	MovieName string          `json:"movie,omitempty"`
-	Watched  bool             `json:"watched,omitempty"` 
+	ID        primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	MovieName string             `json:"movie,omitempty"`
+	Watched   bool               `json:"watched,omitempty"`
 }
